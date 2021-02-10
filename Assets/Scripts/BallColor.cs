@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallColor : MonoBehaviour
 {
+    [SerializeField]
+    GameObject splash;
+    private ParticleController particleController;
+    //public ParticleController ParticleController { get { return (particleController == null) ? particleController = GetComponent<ParticleController>() : particleController; } }
+
     [SerializeField]
     Color purple, green, pink, blue;
 
@@ -17,14 +23,8 @@ public class BallColor : MonoBehaviour
     }
     void Start()
     {
-        index = Random.Range(0,4);
+        index = Random.Range(0, 4);
         ColorObj();
-    }
-
-   
-    void Update()
-    {
-        
     }
 
     public void ColorObj()
@@ -57,4 +57,24 @@ public class BallColor : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        var color = other.gameObject.GetComponent<MeshRenderer>().material.color;
+        if (color == meshRenderer.material.color)
+        {
+            Debug.Log("saame");
+            FindObjectOfType<ParticleController>().InstantiateExplosion();
+           // particleController.InstantiateExplosion();
+            Destroy(other.gameObject);
+        }
+        else
+        {
+            FindObjectOfType<RotateHelix>().GameOver();
+            Debug.Log("we could be the same");
+            splash.SetActive(true);
+
+            int indexscene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(indexscene);
+        }
+    }
 }

@@ -5,13 +5,8 @@ using UnityEngine;
 
 public class RotateHelix : MonoBehaviour
 {
+    bool isRotating = true;
     private float rotSpeed = 20;
-
-    void Start()
-    {
-        
-    }
-
    
     void Update()
     {
@@ -24,7 +19,11 @@ public class RotateHelix : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        Rotate();
+        if(isRotating)
+        {
+            Rotate();
+        }
+        
     }
 
     private void Rotate()
@@ -32,5 +31,10 @@ public class RotateHelix : MonoBehaviour
         float rotX = Input.GetAxis("Mouse X") * rotSpeed /** Time.deltaTime*/* Mathf.Deg2Rad;
         transform.RotateAround(Vector3.forward, -rotX);
 
+    }
+
+    public void GameOver()
+    {
+        isRotating = false;
     }
 }
