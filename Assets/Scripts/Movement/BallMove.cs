@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BallMove : MonoBehaviour
 {
-    [SerializeField]
-    float speed;
+    
+    float speed = 350;
 
     Rigidbody rigidbody;
 
@@ -32,5 +32,11 @@ public class BallMove : MonoBehaviour
         {
             rigidbody.AddForce(Vector3.forward * speed * Time.deltaTime);
         }
+    }
+
+    public void StopBall()
+    {
+        rigidbody.isKinematic = true;
+        speed = 0;
     }
 }

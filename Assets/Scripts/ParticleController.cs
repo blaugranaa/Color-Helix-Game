@@ -8,9 +8,12 @@ public class ParticleController : MonoBehaviour
     [SerializeField]
     GameObject explosionPrefab;
 
+    [SerializeField]
+    GameObject ball;
+
 
     public void InstantiateExplosion()
     {
-        Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.identity);
+        Instantiate(explosionPrefab, ball.transform.position, Quaternion.identity);
     }
 }
