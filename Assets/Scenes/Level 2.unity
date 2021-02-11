@@ -1354,6 +1354,12 @@ PrefabInstance:
       propertyPath: ball
       value: 
       objectReference: {fileID: 1734629910}
+    - target: {fileID: 3344100072403024662, guid: fbf7ef9e0e75a564f9ef33853e96b037,
+        type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 1260334799937022, guid: 2b28f2fdc5a65964f96ea4d2b9d6ca63,
+        type: 3}
     - target: {fileID: 3344100072403024663, guid: fbf7ef9e0e75a564f9ef33853e96b037,
         type: 3}
       propertyPath: m_Name

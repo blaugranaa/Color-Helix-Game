@@ -78,16 +78,9 @@ public class BallColor : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     { 
         var color = other.gameObject.GetComponent<MeshRenderer>().material.color;
-        if (color == meshRenderer.material.color && other.gameObject.tag != "Orange" )
+        if (color == meshRenderer.material.color)
         {
             Debug.Log("saame");
-            FindObjectOfType<ParticleController>().InstantiateExplosion();
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.tag == "Orange")
-        {
-            Debug.Log("orange");
-            FindObjectOfType<ParticleController>().SetParticleColor();
             FindObjectOfType<ParticleController>().InstantiateExplosion();
             Destroy(other.gameObject);
         }
