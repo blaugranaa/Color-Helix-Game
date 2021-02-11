@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
     GameObject player = default;
+
     private Vector3 _offset;
 
     public void Start()

@@ -7,15 +7,23 @@ public class BallColor : MonoBehaviour
 {
     BallMove ballMove;
 
+    public Color currentColor;
+
     [SerializeField]
     GameObject splash;
+
+    [SerializeField]
+
+
     private ParticleController particleController;
     //public ParticleController ParticleController { get { return (particleController == null) ? particleController = GetComponent<ParticleController>() : particleController; } }
 
     [SerializeField]
-    Color purple, green, pink, blue;
+    Color orange, green, purple, blue;
 
     MeshRenderer meshRenderer;
+
+    Color splashColor;
 
     int index;
 
@@ -23,41 +31,42 @@ public class BallColor : MonoBehaviour
     {
         ballMove = GetComponent<BallMove>();
         meshRenderer = GetComponent<MeshRenderer>();
+        splashColor = splash.GetComponent<SpriteRenderer>().color;
     }
     void Start()
     {
-        
         index = Random.Range(0, 4);
         ColorObj();
+        currentColor = FindObjectOfType<BallColor>().GetComponent<MeshRenderer>().material.color;
+    }
+    private void Update()
+    {
+        splash.GetComponent<SpriteRenderer>().color = currentColor;
     }
 
     public void ColorObj()
     {
-        var splashColor = splash.GetComponent<SpriteRenderer>().material.color;
+        
         switch (index)
         {
             case 0:
                 {
                     meshRenderer.material.color = purple;
-                    splashColor = purple;
                     break;
                 }
             case 1:
                 {
                     meshRenderer.material.color = blue;
-                    splashColor = blue;
                     break;
                 }
             case 2:
                 {
-                    meshRenderer.material.color = pink;
-                    splashColor = pink;
+                    meshRenderer.material.color = orange;
                     break;
                 }
             case 3:
                 {
                     meshRenderer.material.color = green;
-                    splashColor = green;
                     break;
                 }
 
@@ -67,28 +76,34 @@ public class BallColor : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other)
-    {
-
-     
+    { 
         var color = other.gameObject.GetComponent<MeshRenderer>().material.color;
-        if (color == meshRenderer.material.color)
+        if (color == meshRenderer.material.color && other.gameObject.tag != "Orange" )
         {
             Debug.Log("saame");
             FindObjectOfType<ParticleController>().InstantiateExplosion();
-           // particleController.InstantiateExplosion();
             Destroy(other.gameObject);
-            
+        }
+        else if(other.gameObject.tag == "Orange")
+        {
+            Debug.Log("orange");
+            FindObjectOfType<ParticleController>().SetParticleColor();
+            FindObjectOfType<ParticleController>().InstantiateExplosion();
+            Destroy(other.gameObject);
         }
         else
         {
-            FindObjectOfType<RotateHelix>().GameOver();
             Debug.Log("we could be the same");
             splash.SetActive(true);
-            ballMove.StopBall();
-
-
-            //int indexscene = SceneManager.GetActiveScene().buildIndex;
-            //SceneManager.LoadScene(indexscene);
+            GameManager.instance.FinishGame();
+            StartCoroutine(LoadSceneCo());
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);                      
         }
     }
+
+    IEnumerator LoadSceneCo()
+    {
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }     
 }

@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallMove : MonoBehaviour
-{
-    
+{   
     float speed = 350;
 
     Rigidbody rigidbody;
@@ -20,7 +19,6 @@ public class BallMove : MonoBehaviour
         
     }
 
-   
     void Update()
     {
         MoveForward();
