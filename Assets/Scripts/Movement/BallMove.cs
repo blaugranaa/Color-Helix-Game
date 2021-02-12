@@ -9,6 +9,9 @@ public class BallMove : MonoBehaviour
 
     Rigidbody rigidbody;
 
+    bool move;
+   
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -16,17 +19,23 @@ public class BallMove : MonoBehaviour
 
     void Start()
     {
-        
+        move = false;
     }
+    
 
     void Update()
     {
-        MoveForward();
+        CheckTouch();
+        
+        if (move)
+        {
+            MoveForward();
+        }
     }
 
     private void MoveForward()
     {
-        if (rigidbody.velocity.magnitude <3.5f)
+        if (rigidbody.velocity.magnitude < 3.5f)
         {
             rigidbody.AddForce(Vector3.forward * speed * Time.deltaTime);
         }
@@ -37,4 +46,16 @@ public class BallMove : MonoBehaviour
         rigidbody.isKinematic = true;
         speed = 0;
     }
+
+    void CheckTouch()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            move = true;
+        }
+    }
+    
+    
+  
+ 
 }

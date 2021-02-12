@@ -83,14 +83,20 @@ public class BallColor : MonoBehaviour
             Debug.Log("saame");
             FindObjectOfType<ParticleController>().InstantiateExplosion();
             Destroy(other.gameObject);
+
         }
         else
         {
             Debug.Log("we could be the same");
             splash.SetActive(true);
-            GameManager.instance.FinishGame();
-            StartCoroutine(LoadSceneCo());
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);                      
+            //GameManager.instance.FinishGame();
+            //StartCoroutine(LoadSceneCo());
+            //Destroy(gameObject.transform.parent.gameObject);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //Destroy(gameObject.transform.parent);
+            GameManager.instance.Fail();
+            FindObjectOfType<Button>().Finish();
+            //GameObject.Find("Restart").SetActive(true);
         }
     }
 

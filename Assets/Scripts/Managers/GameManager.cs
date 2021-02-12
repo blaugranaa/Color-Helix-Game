@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public BallMove BallMove { get { return (ballMove == null) ? ballMove = GetComponent<BallMove>() : ballMove; } }
 
     public static GameManager instance;
+
+    public bool isStarted;
+
+    [SerializeField] GameObject restartButton;
     public void Awake()
     {
         Singleton();
@@ -30,12 +34,14 @@ public class GameManager : MonoBehaviour
    {
         FindObjectOfType<RotateHelix>().GameOver();
         FindObjectOfType<BallMove>().StopBall();
-   }
+        
+    }
 
     public void Fail()
     {
         FindObjectOfType<BallMove>().StopBall();
         FindObjectOfType<RotateHelix>().GameOver();
+        //restartButton.SetActive(true);
         //UI açılışı eklenecek
     }
 }
