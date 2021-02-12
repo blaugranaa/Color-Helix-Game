@@ -91,11 +91,9 @@ public class BallColor : MonoBehaviour
             splash.SetActive(true);
             //GameManager.instance.FinishGame();
             //StartCoroutine(LoadSceneCo());
-            //Destroy(gameObject.transform.parent.gameObject);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             //Destroy(gameObject.transform.parent);
             GameManager.instance.Fail();
-            FindObjectOfType<Button>().Finish();
+            //FindObjectOfType<Button>().Finish();
             //GameObject.Find("Restart").SetActive(true);
         }
     }

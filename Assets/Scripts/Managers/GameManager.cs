@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Singleton();
+        restartButton = GetComponent<GameObject>();
     }
 
     void Singleton()
@@ -34,14 +35,12 @@ public class GameManager : MonoBehaviour
    {
         FindObjectOfType<RotateHelix>().GameOver();
         FindObjectOfType<BallMove>().StopBall();
-        
-    }
+   }
 
     public void Fail()
     {
         FindObjectOfType<BallMove>().StopBall();
         FindObjectOfType<RotateHelix>().GameOver();
-        //restartButton.SetActive(true);
-        //UI açılışı eklenecek
+        restartButton.SetActive(true);
     }
 }
