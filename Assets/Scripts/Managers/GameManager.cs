@@ -11,11 +11,9 @@ public class GameManager : MonoBehaviour
 
     public bool isStarted;
 
-    [SerializeField] GameObject restartButton;
     public void Awake()
     {
         Singleton();
-        restartButton = GetComponent<GameObject>();
     }
 
     void Singleton()
@@ -41,6 +39,6 @@ public class GameManager : MonoBehaviour
     {
         FindObjectOfType<BallMove>().StopBall();
         FindObjectOfType<RotateHelix>().GameOver();
-        restartButton.SetActive(true);
+        EventManager.OnLevelFail.Invoke();
     }
 }
