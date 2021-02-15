@@ -7,15 +7,15 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     GameObject player = default;
 
-    private Vector3 _offset;
+    private Vector3 offset;
 
     public void Start()
     {
-        _offset = transform.position - player.transform.position;
+        offset = transform.position - player.transform.position;
     }
 
     public void Update()
     {
-        transform.position = player.transform.position + _offset;
+        transform.position = player.transform.position + offset;
     }
 }

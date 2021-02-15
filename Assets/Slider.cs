@@ -15,15 +15,12 @@ public class Slider : MonoBehaviour
     
     public UnityEngine.UI.Slider slider;
 
-
-
     float distanceMax;
     void Start()
     {
         distanceMax = Vector3.Distance(player.transform.position, finishLine.transform.position);
     }
 
-   
     void Update()
     {
         float distanceMin = Vector3.Distance(player.transform.position, finishLine.transform.position);

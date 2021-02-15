@@ -10,7 +10,6 @@ public class BallMove : MonoBehaviour
     Rigidbody rigidbody;
 
     bool move;
-   
 
     private void Awake()
     {
@@ -20,8 +19,7 @@ public class BallMove : MonoBehaviour
     void Start()
     {
         move = false;
-    }
-    
+    }  
 
     void Update()
     {
@@ -54,8 +52,4 @@ public class BallMove : MonoBehaviour
             move = true;
         }
     }
-    
-    
-  
- 
 }

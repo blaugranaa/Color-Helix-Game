@@ -12,9 +12,6 @@ public class BallColor : MonoBehaviour
     [SerializeField]
     GameObject splash;
 
-    [SerializeField]
-
-
     private ParticleController particleController;
     //public ParticleController ParticleController { get { return (particleController == null) ? particleController = GetComponent<ParticleController>() : particleController; } }
 
@@ -83,7 +80,6 @@ public class BallColor : MonoBehaviour
             Debug.Log("saame");
             FindObjectOfType<ParticleController>().InstantiateExplosion();
             Destroy(other.gameObject);
-
         }
         else
         {

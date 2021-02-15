@@ -19,8 +19,7 @@ public class FinishLine : MonoBehaviour
             GameManager.instance.FinishGame();
             FindObjectOfType<ParticleController>().InstantiateFinishParticle();
             StartCoroutine(NextSceneCo());
-        }
-       
+        } 
     }
 
     IEnumerator NextSceneCo()

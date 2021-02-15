@@ -12,9 +12,6 @@ public class RotateHelix : MonoBehaviour
     void Update()
     {
         OnMouseDrag();
-        //float rotate = Input.GetAxis("Mouse X");
-        //Vector3 vector3 = new Vector3(0f, 0f, rotate * speedRotate);
-        //transform.Rotate(vector3);
     }
 
     private void OnMouseDrag()

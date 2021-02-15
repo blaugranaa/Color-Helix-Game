@@ -32,13 +32,4 @@ public class ParticleController : MonoBehaviour
     {
         Instantiate(finishParticlePrefab, ball.transform.position, Quaternion.identity);
     }
-
-    public void SetParticleColor()
-    {
-        //var main = explosionPrefab.gameObject.GetComponent<ParticleSystem>().main;
-        //main.startColor = PColor;
-    }
-
-    
-    
 }

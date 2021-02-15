@@ -5,13 +5,11 @@ using UnityEngine.EventSystems;
 
 public class Touch : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-
     private static bool pressing;
 
     public static bool IsPressing()
     {
-        return pressing;
-        
+        return pressing; 
     }
 
     public void OnPointerDown(PointerEventData data)
@@ -23,5 +21,4 @@ public class Touch : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         pressing = false;
     }
-
 }
